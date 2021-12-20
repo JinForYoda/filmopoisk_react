@@ -1,18 +1,22 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import CardItem from './CardItem'
 import { FilmsContext } from './context/Context';
+import MainCard from './UI/MainCard';
 
 export default function CardList({ films, lastElement }) {
-	const { empty, setEmpty } = useContext(FilmsContext)
-	console.log(empty);
+	const { empty, setEmpty, main, setMain } = useContext(FilmsContext)
+	const [mainFilm, setMainFilm] = useState({})
+
+
 	return (
 		<main >
 			{
 				films.map((film) =>
-					<CardItem film={film} />
+					<CardItem setMainFilm={setMainFilm} film={film} />
 				)
 			}
 
+			{main && <MainCard film={mainFilm} setMainFilm={setMainFilm} />}
 
 			{empty
 				? < div ref={lastElement} className='page__end' style={{

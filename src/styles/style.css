@@ -23,7 +23,7 @@
 	--add-color: #FF6F25;
 	--text-color:#707070;
 	font-family: 'Roboto';
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	font-weight: 350;
 }
 ::-webkit-scrollbar {
@@ -80,6 +80,6 @@ color:var(--add-color);
 font-size:1.5rem;
 font-weight: 600;
 padding: 0 1rem;
-cursor:default;
+cursor:pointer;
 }
 

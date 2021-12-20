@@ -10,8 +10,11 @@ export default class GetCards {
 		})
 		return response
 	}
-	static async new() {
-
+	static async mainCard(id) {
+		const response = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films/' + id, {
+			headers: { 'X-API-KEY': '6d3fa7eb-964c-4dce-aa30-a6c0cd86cdf7' }
+		})
+		return response
 	}
 }
 

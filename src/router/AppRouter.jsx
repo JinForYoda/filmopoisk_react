@@ -6,16 +6,18 @@ import {
 	Navigate,
 	useLocation,
 
+
 } from "react-router-dom";
 import { FilmsContext } from '../components/context/Context';
 import { routes } from './Routes';
 export default function AppRouter() {
-	const { films, setFilms, location, setLocation, page, setPage } = useContext(FilmsContext);
-	setLocation(useLocation())
+	const { films, setFilms, location, setLocation, page, setPage, setMain } = useContext(FilmsContext);
+	setLocation(useLocation().pathname)
 
 	useEffect(() => {
 		setFilms([])
 		setPage(1)
+		setMain(false)
 
 	}, [location])
 

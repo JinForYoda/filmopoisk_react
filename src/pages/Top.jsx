@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import CardList from '../components/CardList';
 import { FilmsContext } from '../components/context/Context';
 import GetCards from '../components/GetCards'
@@ -6,6 +7,9 @@ import useFetching from '../components/hooks/useFetching';
 import useObserver from '../components/hooks/useObserver';
 
 export default function Top() {
+	const navigate = useNavigate()
+	useEffect(() => { navigate('') }, {})
+
 	const {
 		films, setFilms,
 		page, setPage,
@@ -29,6 +33,8 @@ export default function Top() {
 		setPage(page + 1)
 
 	})
+
+
 
 	useEffect(() => {
 

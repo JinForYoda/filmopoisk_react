@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
 	BrowserRouter
-
 } from "react-router-dom";
 import AppRouter from "./router/AppRouter";
 import Footer from "./components/Footer";
@@ -13,7 +12,7 @@ function App() {
 	const [location, setLocation] = useState()
 	const [page, setPage] = useState(1)
 	const [empty, setEmpty] = useState(true)
-
+	const [main, setMain] = useState(false)
 
 	return (
 		<FilmsContext.Provider value={{
@@ -24,7 +23,9 @@ function App() {
 			page,
 			setPage,
 			empty,
-			setEmpty
+			setEmpty,
+			main,
+			setMain
 		}}>
 			<BrowserRouter>
 				<Header />

@@ -33,7 +33,7 @@ export default function Navigation() {
 		{
 			class: 'navigation__menu__block-list',
 			path: '/about',
-			name: "О нас",
+			name: "О Нас",
 		}
 
 	]

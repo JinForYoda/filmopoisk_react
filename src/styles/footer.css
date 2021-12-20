@@ -10,3 +10,7 @@ footer{
    bottom:0;
 }
 
+footer .title{
+	cursor:default;
+}
+
