@@ -8,7 +8,9 @@ import useObserver from '../components/hooks/useObserver';
 
 export default function Top() {
 	const navigate = useNavigate()
-	useEffect(() => { navigate('') }, {})
+	useEffect(() => {
+		navigate('')
+	}, {})
 
 	const {
 		films, setFilms,

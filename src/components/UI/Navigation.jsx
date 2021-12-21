@@ -4,8 +4,12 @@ import { FilmsContext } from '../context/Context';
 import Genres from './Genres'
 
 export default function Navigation() {
-	const { location, setLocation, page, setPage } = useContext(FilmsContext);
-
+	const { location, setMain, setFilms, setPage } = useContext(FilmsContext);
+	const closeAll = () => {
+		setMain(false)
+		setFilms([])
+		setPage(1)
+	}
 	const links = [
 		{
 			class: 'navigation__menu__block-list',
@@ -45,8 +49,8 @@ export default function Navigation() {
 				{
 
 					location && links.map(link =>
-						<li className={
-							location.pathname === link.path
+						<li onClick={closeAll} className={
+							location === link.path
 								? link.class + ' active'
 								: link.class
 						}>

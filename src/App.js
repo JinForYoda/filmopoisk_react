@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
 	BrowserRouter
 } from "react-router-dom";
@@ -14,18 +14,15 @@ function App() {
 	const [empty, setEmpty] = useState(true)
 	const [main, setMain] = useState(false)
 
+
+
 	return (
 		<FilmsContext.Provider value={{
-			films,
-			setFilms,
-			location,
-			setLocation,
-			page,
-			setPage,
-			empty,
-			setEmpty,
-			main,
-			setMain
+			films, setFilms,
+			location, setLocation,
+			page, setPage,
+			empty, setEmpty,
+			main, setMain
 		}}>
 			<BrowserRouter>
 				<Header />

@@ -11,8 +11,15 @@ import {
 import { FilmsContext } from '../components/context/Context';
 import { routes } from './Routes';
 export default function AppRouter() {
-	const { films, setFilms, location, setLocation, page, setPage, setMain } = useContext(FilmsContext);
+	const { films, setFilms,
+		location, setLocation,
+		page, setPage,
+		setMain } = useContext(FilmsContext);
+
 	setLocation(useLocation().pathname)
+
+
+
 
 	useEffect(() => {
 		setFilms([])
