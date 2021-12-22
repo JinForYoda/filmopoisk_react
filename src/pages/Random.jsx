@@ -24,14 +24,15 @@ export default function Random() {
 	})
 
 
-	useEffect(() => {
-		setRandomId(randomInt(300, 10000))
-	}, [])
+
 
 	useEffect(() => {
 		if (!window.location.search) {
 			setIsDone(false)
 			setRandomId(randomInt(300, 10000))
+		}
+		else {
+			fetchRandomCard()
 		}
 	}, [useLocation()])
 

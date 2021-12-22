@@ -5,27 +5,31 @@ import { FilmsContext } from '../components/context/Context';
 import GetCards from '../components/GetCards'
 import useFetching from '../components/hooks/useFetching';
 import useObserver from '../components/hooks/useObserver';
+import getDate from '../components/utils/getDate';
 
-export default function Top() {
+export default function New() {
 	const navigate = useNavigate()
 	useEffect(() => {
 		navigate('')
+
 	}, [])
 
 	const {
 		films, setFilms,
 		page, setPage,
-		empty, setEmpty,
+		empty, setEmpty
 	} = useContext(FilmsContext)
-
+	const [totalPages, setTotalPages] = useState(0)
 	const lastElement = useRef()
 
-	const [totalPages, setTotalPages] = useState(0)
 
-	const [fetchCardsTop, isLoading] = useFetching(async () => {
-		const response = await GetCards.top(page)
-		setFilms([...films, ...response.data.films])
-		setTotalPages(response.data.pagesCount)
+	const pageItems = 20;
+	const [fetchCardsNew, isLoading] = useFetching(async () => {
+		const [month, year] = getDate()
+		const response = await GetCards.new(month, year)
+		setTotalPages(Math.ceil(response.data.total / pageItems))
+		setFilms([...films, ...response.data.items.splice((page - 1) * 20, pageItems)])
+
 	})
 
 
@@ -40,14 +44,14 @@ export default function Top() {
 
 	useEffect(() => {
 
-		fetchCardsTop()
+		fetchCardsNew()
 
 	}, [page])
 
 	useEffect(() => {
 		if (films.length === 0) {
 			setEmpty(true)
-			fetchCardsTop()
+			fetchCardsNew()
 		}
 		else {
 			setEmpty(false)

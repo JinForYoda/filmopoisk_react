@@ -13,7 +13,7 @@ export default function MainCard({ film, setMainFilm }) {
 	const { main, setMain } = useContext(FilmsContext)
 
 	const [fetchMainCard, isLoading] = useFetching(async () => {
-		const response = await GetCards.mainCard(film.filmId)
+		const response = await GetCards.mainCard(film.kinopoiskId || film.filmId)
 		setMainFilm(response.data)
 
 	})
@@ -21,7 +21,7 @@ export default function MainCard({ film, setMainFilm }) {
 
 	useEffect(() => {
 		fetchMainCard()
-		navigate(`?filmId=${film.filmId}`)
+		navigate(`?filmId=${film.kinopoiskId || film.filmId}`)
 	}, [main])
 
 	return (
