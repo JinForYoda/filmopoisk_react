@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FilmsContext } from '../context/Context';
-import Genres from './Genres'
+import GenresList from './GenresList'
 
 export default function Navigation() {
 	const { location, setMain, setFilms, setPage } = useContext(FilmsContext);
@@ -10,6 +10,18 @@ export default function Navigation() {
 		setFilms([])
 		setPage(1)
 	}
+	const genre = useRef()
+	const genreBlock = useRef()
+	const [isVisible, setIsVisible] = useState(false)
+
+	const setVisible = (event) => {
+		if (event.target === genre.current) setIsVisible(true)
+
+		if (event.target !== genre.current && !genreBlock.current.contains(event.target)) setIsVisible(false)
+	}
+
+	document.addEventListener('mouseover', setVisible)
+
 	const links = [
 		{
 			class: 'navigation__menu__block-list',
@@ -26,7 +38,10 @@ export default function Navigation() {
 			class: 'navigation__menu__block-list genre',
 			path: '/genres',
 			name: "Жанр",
-			child: Genres
+			child: GenresList,
+			ref: genre,
+			childRef: genreBlock
+
 
 		},
 		{
@@ -54,10 +69,14 @@ export default function Navigation() {
 								? link.class + ' active'
 								: link.class
 						}>
-							<Link to={link.path}>
+
+							<Link ref={link.ref && link.ref} to={link.path}>
 								{link.name}
 							</Link>
-							{link.child ? <link.child /> : ""}
+							{link.child
+								? <link.child isVisible={isVisible} reference={link.childRef && link.childRef} />
+								: ""
+							}
 						</li>
 					)
 				}

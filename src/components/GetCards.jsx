@@ -19,6 +19,13 @@ export default class GetCards {
 		return response
 	}
 
+	static async random() {
+		const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year}&month=${month}`, {
+			headers: { 'X-API-KEY': '6d3fa7eb-964c-4dce-aa30-a6c0cd86cdf7' }
+		})
+		return response
+	}
+
 	static async mainCard(id) {
 		try {
 			const response = await axios.get('https://kinopoiskapiunofficial.tech/api/v2.2/films/' + id, {
