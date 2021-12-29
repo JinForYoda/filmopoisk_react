@@ -19,12 +19,16 @@ export default class GetCards {
 		return response
 	}
 
-	static async random() {
-		const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/premieres?year=${year}&month=${month}`, {
+	static async byGenre(page, id) {
+
+		const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-filters?genre=${id}&order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1888&yearTo=2021&page=${page}`, {
 			headers: { 'X-API-KEY': '6d3fa7eb-964c-4dce-aa30-a6c0cd86cdf7' }
 		})
+
 		return response
 	}
+
+
 
 	static async mainCard(id) {
 		try {

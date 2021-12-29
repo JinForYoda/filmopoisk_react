@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { FilmsContext } from './context/Context'
 
 export default function CardItem({ film, setMainFilm }) {
-	const { main, setMain } = useContext(FilmsContext)
-	const navigate = useNavigate()
+	const { setMain } = useContext(FilmsContext)
 	function getMainCard() {
 		setMain(true)
 		setMainFilm(film)

@@ -5,6 +5,7 @@ import { FilmsContext } from '../components/context/Context';
 import GetCards from '../components/GetCards'
 import useFetching from '../components/hooks/useFetching';
 import useObserver from '../components/hooks/useObserver';
+import Loader from '../components/UI/Loader';
 import getDate from '../components/utils/getDate';
 
 export default function New() {
@@ -44,12 +45,12 @@ export default function New() {
 
 	useEffect(() => {
 
-		fetchCardsNew()
+		if (films.length !== 0) fetchCardsNew()
 
 	}, [page])
 
 	useEffect(() => {
-		if (films.length === 0) {
+		if (films.length === 0 && !isLoading) {
 			setEmpty(true)
 			fetchCardsNew()
 		}
@@ -60,8 +61,9 @@ export default function New() {
 	}, [films])
 
 	return (
-
-		<CardList lastElement={lastElement} films={films} />
+		isLoading && empty
+			? <Loader />
+			: <CardList lastElement={lastElement} films={films} />
 
 	)
 }

@@ -12,7 +12,6 @@ export default function Random() {
 	const [isDone, setIsDone] = useState(false)
 
 	const [fetchRandomCard, isLoading] = useFetching(async () => {
-
 		const response = await GetCards.mainCard(randomId)
 		if (response.data) {
 			setRandomFilm(response.data)

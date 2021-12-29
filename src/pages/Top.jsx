@@ -5,6 +5,7 @@ import { FilmsContext } from '../components/context/Context';
 import GetCards from '../components/GetCards'
 import useFetching from '../components/hooks/useFetching';
 import useObserver from '../components/hooks/useObserver';
+import Loader from '../components/UI/Loader';
 
 export default function Top() {
 	const navigate = useNavigate()
@@ -26,6 +27,7 @@ export default function Top() {
 		const response = await GetCards.top(page)
 		setFilms([...films, ...response.data.films])
 		setTotalPages(response.data.pagesCount)
+
 	})
 
 
@@ -40,24 +42,29 @@ export default function Top() {
 
 	useEffect(() => {
 
-		fetchCardsTop()
+		if (films.length !== 0) fetchCardsTop()
 
 	}, [page])
 
 	useEffect(() => {
-		if (films.length === 0) {
+		if (films.length === 0 && !isLoading) {
 			setEmpty(true)
 			fetchCardsTop()
 		}
 		else {
 			setEmpty(false)
+
 		}
 
 	}, [films])
 
 	return (
 
-		<CardList lastElement={lastElement} films={films} />
+
+		isLoading && empty
+			? <Loader />
+			: < CardList lastElement={lastElement} films={films} />
+
 
 	)
 }

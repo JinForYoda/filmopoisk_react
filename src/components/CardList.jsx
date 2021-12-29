@@ -4,12 +4,13 @@ import { FilmsContext } from './context/Context';
 import MainCard from './UI/MainCard';
 
 export default function CardList({ films, lastElement }) {
-	const { empty, setEmpty, main, setMain } = useContext(FilmsContext)
+	const { empty, main } = useContext(FilmsContext)
 	const [mainFilm, setMainFilm] = useState({})
 
 
 	return (
-		<main >
+
+		<main>
 			{
 				films.map((film) =>
 					<CardItem setMainFilm={setMainFilm} film={film} />
@@ -30,5 +31,6 @@ export default function CardList({ films, lastElement }) {
 
 			}
 		</main >
+
 	)
 }

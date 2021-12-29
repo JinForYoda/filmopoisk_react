@@ -11,10 +11,12 @@ import {
 import { FilmsContext } from '../components/context/Context';
 import { routes } from './Routes';
 export default function AppRouter() {
-	const { films, setFilms,
+	const { setFilms,
 		location, setLocation,
-		page, setPage,
-		setMain } = useContext(FilmsContext);
+		setPage,
+		setMain,
+		setSearchParams
+	} = useContext(FilmsContext);
 
 	setLocation(useLocation().pathname)
 
@@ -25,6 +27,7 @@ export default function AppRouter() {
 		setFilms([])
 		setPage(1)
 		setMain(false)
+		if (location !== '/genres') setSearchParams()
 
 	}, [location])
 

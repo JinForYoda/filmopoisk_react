@@ -1,22 +1,30 @@
-import React, { useRef, useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useRef, useContext, useState, useEffect } from 'react'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 import { FilmsContext } from '../context/Context'
+import deleteFilmId from '../utils/deleteFilmId'
 import setTime from '../utils/setTime'
+
 
 export default function MainFilm({ film, isLoading }) {
 	const closeBtn = useRef()
 	const bckg = useRef()
 	const [imgLoad, setImgLoad] = useState(false)
 
-	const { setMain, location } = useContext(FilmsContext)
+	const { setMain, location, searchParams, setSearchParams } = useContext(FilmsContext)
 	const navigate = useNavigate()
+
 	function close(event) {
 		if (
 			event.target === closeBtn.current
 			|| event.target === bckg.current
 		) {
+			if (searchParams) setSearchParams(deleteFilmId(searchParams))
+
+			navigate({
+				search: `?${createSearchParams(searchParams)}`
+			})
 			setMain(false)
-			navigate('')
+
 		}
 	}
 
