@@ -10,7 +10,12 @@ export default function MainFilm({ film, isLoading }) {
 	const bckg = useRef()
 	const [imgLoad, setImgLoad] = useState(false)
 
-	const { setMain, location, searchParams, setSearchParams } = useContext(FilmsContext)
+	const {
+		setMain,
+		location,
+		searchParams,
+		setSearchParams
+	} = useContext(FilmsContext)
 	const navigate = useNavigate()
 
 	function close(event) {
@@ -18,7 +23,7 @@ export default function MainFilm({ film, isLoading }) {
 			event.target === closeBtn.current
 			|| event.target === bckg.current
 		) {
-			if (searchParams) setSearchParams(deleteFilmId(searchParams))
+			setSearchParams(deleteFilmId(searchParams))
 
 			navigate({
 				search: `?${createSearchParams(searchParams)}`

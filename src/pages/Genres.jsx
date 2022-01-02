@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
-import { createSearchParams, useLocation, useNavigate } from 'react-router-dom';
+import { createSearchParams, useNavigate } from 'react-router-dom';
 import CardList from '../components/CardList';
 import { FilmsContext } from '../components/context/Context'
 import GetCards from '../components/GetCards';
@@ -13,15 +13,35 @@ export default function Genres() {
 		films, setFilms,
 		page, setPage,
 		empty, setEmpty,
-		selectedGenre
+		selectedGenre, setSelectedGenre,
+		searchParams,
+		date
 	} = useContext(FilmsContext)
 
 	const lastElement = useRef()
 
 	const [totalPages, setTotalPages] = useState(0)
 
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (selectedGenre) navigate({
+			search: `${createSearchParams(searchParams)}`
+		})
+	}, [searchParams, selectedGenre])
+
+	useEffect(() => {
+		if (selectedGenre) {
+			localStorage.setItem('selectedGenre', selectedGenre)
+		}
+		if (!selectedGenre) {
+			setSelectedGenre(localStorage.getItem('selectedGenre'))
+		}
+	}, [selectedGenre])
+
+
 	const [fetchCardsGenre, isLoading] = useFetching(async () => {
-		const response = await GetCards.byGenre(page, selectedGenre)
+		const response = await GetCards.byGenre(page, selectedGenre, date.year)
 		setFilms([...films, ...response.data.films])
 		setTotalPages(response.data.pagesCount)
 	})
@@ -33,23 +53,16 @@ export default function Genres() {
 	})
 
 
-
-
-
 	useEffect(() => {
 
 		if (films.length !== 0) fetchCardsGenre()
 
 	}, [page])
 
-	useEffect(() => {
 
-		if (selectedGenre) fetchCardsGenre()
-
-	}, [selectedGenre])
 
 	useEffect(() => {
-		if (films.length === 0 && !isLoading && selectedGenre) {
+		if (films.length === 0 && !isLoading && date) {
 			setEmpty(true)
 			fetchCardsGenre()
 		}
@@ -63,12 +76,6 @@ export default function Genres() {
 	return (
 		isLoading && empty
 			? <Loader />
-			: (
-
-				< CardList lastElement={lastElement} films={films} />
-
-
-			)
-
+			: < CardList lastElement={lastElement} films={films} />
 	)
 }

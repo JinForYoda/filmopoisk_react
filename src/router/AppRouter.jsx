@@ -1,36 +1,24 @@
 import React, { useContext, useEffect } from 'react'
 import {
-
 	Routes,
 	Route,
 	Navigate,
 	useLocation,
-
-
 } from "react-router-dom";
 import { FilmsContext } from '../components/context/Context';
 import { routes } from './Routes';
 export default function AppRouter() {
-	const { setFilms,
+	const {
 		location, setLocation,
-		setPage,
-		setMain,
-		setSearchParams
+		setFilms, setSelectedGenre
 	} = useContext(FilmsContext);
 
 	setLocation(useLocation().pathname)
 
-
-
-
 	useEffect(() => {
 		setFilms([])
-		setPage(1)
-		setMain(false)
-		if (location !== '/genres') setSearchParams()
-
+		if (location === 'genres') setSelectedGenre()
 	}, [location])
-
 
 	return (
 

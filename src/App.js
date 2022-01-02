@@ -6,7 +6,8 @@ import AppRouter from "./router/AppRouter";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { FilmsContext } from "./components/context/Context";
-import getGenresId from "./components/utils/getGenresId";
+
+import getDate from "./components/utils/getDate";
 
 function App() {
 	const [films, setFilms] = useState([])
@@ -14,13 +15,16 @@ function App() {
 	const [page, setPage] = useState(1)
 	const [empty, setEmpty] = useState(true)
 	const [main, setMain] = useState(false)
-	const [genresId, setGenresId] = useState()
 	const [selectedGenre, setSelectedGenre] = useState()
 	const [searchParams, setSearchParams] = useState()
+	const [date, setDate] = useState()
 
-	useEffect(async () => {
-		setGenresId(await getGenresId())
+
+
+	useEffect(() => {
+		setDate(getDate())
 	}, [])
+
 
 
 
@@ -31,9 +35,9 @@ function App() {
 			page, setPage,
 			empty, setEmpty,
 			main, setMain,
-			genresId, setGenresId,
 			selectedGenre, setSelectedGenre,
-			searchParams, setSearchParams
+			searchParams, setSearchParams,
+			date
 		}}>
 			<BrowserRouter>
 				<Header />

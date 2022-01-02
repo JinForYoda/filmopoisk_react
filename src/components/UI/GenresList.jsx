@@ -1,22 +1,21 @@
 import React, { useContext, useEffect } from 'react'
-import { createSearchParams, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FilmsContext } from '../context/Context'
+import getGenresById from '../utils/getGenresById'
+import getKeyByValue from '../utils/getKeyByValue'
 
-export default function GenresList({ isVisible, reference }) {
+
+export default function GenresList({ isVisible, reference, closeAll }) {
 	const {
-		genresId,
 		selectedGenre, setSelectedGenre,
 		searchParams, setSearchParams
 	} = useContext(FilmsContext)
 
-	const navigate = useNavigate()
-
-	useEffect(() => {
-		if (selectedGenre) navigate({
-			pathname: 'genres',
-			search: `?${createSearchParams(searchParams)}`,
-		})
-	}, [selectedGenre])
+	// useEffect(() => {
+	// 	if (!searchParams && selectedGenre) {
+	// 		console.log(getKeyByValue(getGenresById(), selectedGenre));
+	// 	}
+	// }, [selectedGenre])
 
 	const genres = [
 		{
@@ -59,14 +58,16 @@ export default function GenresList({ isVisible, reference }) {
 			{
 				genres.map(genre =>
 					<div className="genre__block__name">
-						<a className="genre__block__name-link "
+						<Link className="genre__block__name-link "
+							to='genres'
 							onClick={() => {
-								setSelectedGenre(genresId[genre.name.toLowerCase()])
+								setSelectedGenre(getGenresById()[genre.name.toLowerCase()])
 								setSearchParams({
 									genre: genre.query
 								})
+								closeAll()
 							}}
-						>{genre.name}</a>
+						>{genre.name}</Link>
 					</div>
 				)
 			}

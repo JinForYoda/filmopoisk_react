@@ -5,5 +5,8 @@ export default function getDate() {
 	];
 
 	const d = new Date();
-	return [monthNames[d.getMonth()].toUpperCase(), d.getFullYear()]
+	return {
+		month: monthNames[d.getMonth()].toUpperCase(),
+		year: d.getFullYear()
+	}
 }

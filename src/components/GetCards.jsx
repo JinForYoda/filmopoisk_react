@@ -19,9 +19,9 @@ export default class GetCards {
 		return response
 	}
 
-	static async byGenre(page, id) {
+	static async byGenre(page, id, year) {
 
-		const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-filters?genre=${id}&order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1888&yearTo=2021&page=${page}`, {
+		const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-filters?genre=${id}&order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1888&yearTo=${year}&page=${page}`, {
 			headers: { 'X-API-KEY': '6d3fa7eb-964c-4dce-aa30-a6c0cd86cdf7' }
 		})
 
