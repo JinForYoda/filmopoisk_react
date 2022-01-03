@@ -6,6 +6,7 @@ import GetCards from '../components/GetCards';
 import useFetching from '../components/hooks/useFetching';
 import useObserver from '../components/hooks/useObserver';
 import Loader from '../components/UI/Loader';
+import deleteFilmId from '../components/utils/deleteFilmId'
 
 export default function Genres() {
 
@@ -14,7 +15,7 @@ export default function Genres() {
 		page, setPage,
 		empty, setEmpty,
 		selectedGenre, setSelectedGenre,
-		searchParams,
+		searchParams, setSearchParams,
 		date
 	} = useContext(FilmsContext)
 
@@ -25,19 +26,20 @@ export default function Genres() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		if (selectedGenre) navigate({
-			search: `${createSearchParams(searchParams)}`
-		})
-	}, [searchParams, selectedGenre])
-
-	useEffect(() => {
 		if (selectedGenre) {
 			localStorage.setItem('selectedGenre', selectedGenre)
+			navigate({
+				search: `${createSearchParams(searchParams)}`
+			})
 		}
 		if (!selectedGenre) {
 			setSelectedGenre(localStorage.getItem('selectedGenre'))
 		}
-	}, [selectedGenre])
+		if (!searchParams) {
+
+			setSearchParams(deleteFilmId(JSON.parse(localStorage.getItem('searchParams'))))
+		}
+	}, [searchParams, selectedGenre])
 
 
 	const [fetchCardsGenre, isLoading] = useFetching(async () => {
@@ -58,6 +60,7 @@ export default function Genres() {
 		if (films.length !== 0) fetchCardsGenre()
 
 	}, [page])
+
 
 
 

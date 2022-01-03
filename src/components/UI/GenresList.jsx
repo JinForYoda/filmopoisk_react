@@ -2,20 +2,18 @@ import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FilmsContext } from '../context/Context'
 import getGenresById from '../utils/getGenresById'
-import getKeyByValue from '../utils/getKeyByValue'
+
 
 
 export default function GenresList({ isVisible, reference, closeAll }) {
 	const {
-		selectedGenre, setSelectedGenre,
+		setSelectedGenre,
 		searchParams, setSearchParams
 	} = useContext(FilmsContext)
 
-	// useEffect(() => {
-	// 	if (!searchParams && selectedGenre) {
-	// 		console.log(getKeyByValue(getGenresById(), selectedGenre));
-	// 	}
-	// }, [selectedGenre])
+	useEffect(() => {
+		if (searchParams) localStorage.setItem('searchParams', JSON.stringify(searchParams))
+	}, [searchParams])
 
 	const genres = [
 		{
@@ -65,6 +63,7 @@ export default function GenresList({ isVisible, reference, closeAll }) {
 								setSearchParams({
 									genre: genre.query
 								})
+
 								closeAll()
 							}}
 						>{genre.name}</Link>

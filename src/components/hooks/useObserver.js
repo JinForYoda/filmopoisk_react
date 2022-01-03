@@ -12,6 +12,7 @@ export default function useObserver(ref, films, canLoad, isLoading, callback) {
 			if (entries[0].isIntersecting && canLoad) {
 				callback()
 			}
+			if (!canLoad) ref.current.style.display = 'none'
 		}
 		observer.current = new IntersectionObserver(fu);
 		observer.current.observe(ref.current)

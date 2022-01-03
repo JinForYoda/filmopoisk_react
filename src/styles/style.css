@@ -59,17 +59,20 @@ header{
 main{
 	
 		max-height: calc(100vh - 5rem);
+		
 	flex:1;
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-template-rows: auto;
 	grid-auto-flow: row;
 	gap: 1rem;
+	
 	margin-top: 3rem;
 	margin-bottom: 2rem;
 	padding: 2rem;
 	justify-content:space-around;
 	align-items: center;
+		justify-items: center;
 	position: relative;
 	overflow-y: scroll;
 

@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import CardItem from './CardItem'
 import { FilmsContext } from './context/Context';
 import MainCard from './UI/MainCard';
+import Loader from './UI/Loader'
 
 export default function CardList({ films, lastElement }) {
 	const { empty, main } = useContext(FilmsContext)
@@ -26,8 +27,9 @@ export default function CardList({ films, lastElement }) {
 				}}></div>
 
 				: < div ref={lastElement} className='page__end' style={{
-					height: '2rem'
-				}}></div>
+					height: '2rem',
+					gridColumn: '3'
+				}}><Loader /></div>
 
 			}
 		</main >
