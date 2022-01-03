@@ -60,11 +60,12 @@ export default function GenresList({ isVisible, reference, closeAll }) {
 							to='genres'
 							onClick={() => {
 								setSelectedGenre(getGenresById()[genre.name.toLowerCase()])
+								closeAll()
 								setSearchParams({
 									genre: genre.query
 								})
 
-								closeAll()
+
 							}}
 						>{genre.name}</Link>
 					</div>

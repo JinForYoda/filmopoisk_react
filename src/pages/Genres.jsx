@@ -9,7 +9,6 @@ import Loader from '../components/UI/Loader';
 import deleteFilmId from '../components/utils/deleteFilmId'
 
 export default function Genres() {
-
 	const {
 		films, setFilms,
 		page, setPage,

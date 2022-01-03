@@ -12,16 +12,12 @@ export default function Top() {
 		films, setFilms,
 		page, setPage,
 		empty, setEmpty,
-		searchParams, setSearchParams,
+		searchParams,
 		selectedGenre,
 	} = useContext(FilmsContext)
 	const [totalPages, setTotalPages] = useState(0)
 	const lastElement = useRef()
 	const navigate = useNavigate()
-
-	useEffect(() => {
-		setSearchParams()
-	}, [])
 
 	useEffect(() => {
 		if (!selectedGenre) navigate({
@@ -61,7 +57,6 @@ export default function Top() {
 		}
 		else {
 			setEmpty(false)
-
 		}
 
 	}, [films])

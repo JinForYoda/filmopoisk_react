@@ -1,3 +1,10 @@
+.loaderCenter{
+	grid-column: 3;
+	height: calc(100vh - 9rem);
+	display: flex;
+	align-items: center;
+}
+
 .loader {
   --path: var(--card-color);
   --dot: var(--add-color);

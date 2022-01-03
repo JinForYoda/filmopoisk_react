@@ -17,7 +17,6 @@ export default function AppRouter() {
 
 	useEffect(() => {
 		setFilms([])
-		if (location === 'genres') setSelectedGenre()
 	}, [location])
 
 	return (

@@ -1,19 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FilmsContext } from '../context/Context';
 
 import GenresList from './GenresList'
 
-export default function Navigation() {
-	const { location, setMain, setFilms, setPage } = useContext(FilmsContext)
+export default function Navigation({ closeAll }) {
+	const { location } = useContext(FilmsContext)
 
 
-	const closeAll = () => {
-		setMain(false)
-		setFilms([])
-		setPage(1)
 
-	}
 	const genre = useRef()
 	const genreBlock = useRef()
 	const [isVisible, setIsVisible] = useState(false)
@@ -22,6 +17,7 @@ export default function Navigation() {
 		if (event.target === genre.current) setIsVisible(true)
 
 		if (event.target !== genre.current && !genreBlock.current.contains(event.target)) setIsVisible(false)
+
 	}
 	document.addEventListener('mouseover', setVisible)
 

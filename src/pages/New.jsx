@@ -13,7 +13,7 @@ export default function New() {
 		films, setFilms,
 		page, setPage,
 		empty, setEmpty,
-		searchParams, setSearchParams,
+		searchParams,
 		selectedGenre,
 		date
 	} = useContext(FilmsContext)
@@ -21,9 +21,6 @@ export default function New() {
 	const lastElement = useRef()
 	const navigate = useNavigate()
 
-	useEffect(() => {
-		setSearchParams()
-	}, [])
 
 	useEffect(() => {
 		if (!selectedGenre) navigate({

@@ -1,15 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect, useContext } from 'react'
+import { createSearchParams, useNavigate } from 'react-router-dom'
+import { FilmsContext } from '../components/context/Context'
 import GetCards from '../components/GetCards'
 import useFetching from '../components/hooks/useFetching'
+import Loader from '../components/UI/Loader'
 import MainFilm from '../components/UI/MainFilm'
 import randomInt from '../components/utils/randomInit'
 
 export default function Random() {
 	const navigate = useNavigate()
-	const [randomFilm, setRandomFilm] = useState({})
-	const [randomId, setRandomId] = useState()
+
 	const [isDone, setIsDone] = useState(false)
+	const {
+		searchParams, setSearchParams,
+		randomFilm, setRandomFilm,
+		randomId, setRandomId
+	} = useContext(FilmsContext)
 
 	const [fetchRandomCard, isLoading] = useFetching(async () => {
 		const response = await GetCards.mainCard(randomId)
@@ -23,28 +29,42 @@ export default function Random() {
 	})
 
 
-
-
 	useEffect(() => {
-		if (!window.location.search) {
-			setIsDone(false)
+
+		if (!searchParams) {
 			setRandomId(randomInt(300, 10000))
+			setIsDone(false)
 		}
-		else {
-			fetchRandomCard()
-		}
-	}, [useLocation()])
+	}, [searchParams])
+
 
 	useEffect(() => {
 		if (randomId) {
+			setSearchParams({ filmId: randomId })
 			fetchRandomCard()
-			navigate(`?filmId=${randomId}`)
 		}
 	}, [randomId])
 
+	useEffect(() => {
+
+		navigate({
+			search: `${createSearchParams(searchParams)}`
+		})
+
+
+	}, [searchParams])
+
+
+
+
 	return (
 		<main>
-			{isDone && < MainFilm film={randomFilm} isLoading={isLoading} />}
+			{isDone
+				? < MainFilm film={randomFilm} isLoading={isLoading} />
+				: <div className='loaderCenter' >
+					<Loader />
+				</div>
+			}
 		</main>
 
 
