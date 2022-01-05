@@ -55,7 +55,7 @@ export default function GenresList({ isVisible, reference, closeAll }) {
 			: "genre__block"}>
 			{
 				genres.map(genre =>
-					<div className="genre__block__name">
+					<div key={genre.query} className="genre__block__name">
 						<Link className="genre__block__name-link "
 							to='genres'
 							onClick={() => {

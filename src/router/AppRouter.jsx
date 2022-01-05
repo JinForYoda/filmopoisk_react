@@ -22,8 +22,8 @@ export default function AppRouter() {
 	return (
 
 		<Routes>{
-			routes.map((route) =>
-				<Route element={<route.component />} path={route.path} exact={route.exact} />)}
+			routes.map((route, index) =>
+				<Route element={<route.component />} path={route.path} exact={route.exact} key={index} />)}
 			<Route path='*' element={<Navigate replace to="/about" />} />
 		</Routes>
 	)

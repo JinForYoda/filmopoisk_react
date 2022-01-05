@@ -14,7 +14,7 @@ export default function CardList({ films, lastElement }) {
 		<main>
 			{
 				films.map((film) =>
-					<CardItem setMainFilm={setMainFilm} film={film} />
+					<CardItem key={film.filmId} setMainFilm={setMainFilm} film={film} />
 				)
 			}
 

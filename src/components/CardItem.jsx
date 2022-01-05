@@ -17,7 +17,6 @@ export default function CardItem({ film, setMainFilm }) {
 				<span className="card__title-main">{film.nameRu}</span>
 				<span className="card__title-eng">{film.nameEn}</span>
 			</div>
-			<div className="card__id" style={{ display: 'none' }}>{film.filmId}</div>
 			<div className="card__button">
 				<button className="card__button-watch">Смотреть</button>
 				<button onClick={() => getMainCard()} className="card__button-more">Подробнее</button>

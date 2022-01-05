@@ -73,7 +73,8 @@ export default function Navigation({ closeAll }) {
 							location === link.path
 								? link.class + ' active'
 								: link.class
-						}>
+						}
+							key={link.path}>
 
 							<Link onClick={link.active ? closeAll : (e) => { e.preventDefault() }} ref={link.ref && link.ref} to={link.path}>
 								{link.name}
