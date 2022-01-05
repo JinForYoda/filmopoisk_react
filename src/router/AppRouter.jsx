@@ -3,21 +3,17 @@ import {
 	Routes,
 	Route,
 	Navigate,
-	useLocation,
 } from "react-router-dom";
 import { FilmsContext } from '../components/context/Context';
 import { routes } from './Routes';
 export default function AppRouter() {
 	const {
-		location, setLocation,
-		setFilms, setSelectedGenre
+		setFilms
 	} = useContext(FilmsContext);
-
-	setLocation(useLocation().pathname)
 
 	useEffect(() => {
 		setFilms([])
-	}, [location])
+	}, [])
 
 	return (
 

@@ -12,7 +12,6 @@ import getDate from "./components/utils/getDate";
 function App() {
 	const [search, setSearch] = useState()
 	const [films, setFilms] = useState([])
-	const [location, setLocation] = useState()
 	const [page, setPage] = useState(1)
 	const [empty, setEmpty] = useState(true)
 	const [main, setMain] = useState(false)
@@ -35,7 +34,7 @@ function App() {
 		<FilmsContext.Provider value={{
 			search, setSearch,
 			films, setFilms,
-			location, setLocation,
+
 			page, setPage,
 			empty, setEmpty,
 			main, setMain,

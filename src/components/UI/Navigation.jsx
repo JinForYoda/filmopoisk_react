@@ -1,14 +1,11 @@
-import React, { useContext, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { FilmsContext } from '../context/Context';
+import React, { useRef, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+
 
 import GenresList from './GenresList'
 
 export default function Navigation({ closeAll }) {
-	const { location } = useContext(FilmsContext)
-
-
-
+	const location = useLocation().pathname
 	const genre = useRef()
 	const genreBlock = useRef()
 	const [isVisible, setIsVisible] = useState(false)

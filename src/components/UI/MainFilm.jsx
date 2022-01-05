@@ -1,5 +1,5 @@
-import React, { useRef, useContext, useState, useEffect } from 'react'
-import { createSearchParams, useNavigate } from 'react-router-dom'
+import React, { useRef, useContext, useState } from 'react'
+import { createSearchParams, useLocation, useNavigate } from 'react-router-dom'
 import { FilmsContext } from '../context/Context'
 import deleteFilmId from '../utils/deleteFilmId'
 import setTime from '../utils/setTime'
@@ -12,12 +12,11 @@ export default function MainFilm({ film, isLoading }) {
 
 	const {
 		setMain,
-		location,
 		searchParams,
 		setSearchParams
 	} = useContext(FilmsContext)
 	const navigate = useNavigate()
-
+	const location = useLocation().pathname
 	function close(event) {
 		if (
 			event.target === closeBtn.current
