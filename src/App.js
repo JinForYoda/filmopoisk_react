@@ -20,6 +20,8 @@ function App() {
 	const [date, setDate] = useState()
 	const [randomFilm, setRandomFilm] = useState({})
 	const [randomId, setRandomId] = useState()
+	const [filter, setFilter] = useState({ sort: '', query: '' })
+
 
 
 
@@ -34,7 +36,7 @@ function App() {
 		<FilmsContext.Provider value={{
 			search, setSearch,
 			films, setFilms,
-
+			filter, setFilter,
 			page, setPage,
 			empty, setEmpty,
 			main, setMain,

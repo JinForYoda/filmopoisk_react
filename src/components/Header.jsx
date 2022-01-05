@@ -10,7 +10,7 @@ import { FilmsContext } from './context/Context'
 
 
 export default function Header() {
-	const { setMain, setFilms, setPage, setRandomId, setSearchParams } = useContext(FilmsContext)
+	const { setMain, setFilms, setPage, setRandomId, setSearchParams, setFilter } = useContext(FilmsContext)
 
 	const closeAll = () => {
 		setMain(false)
@@ -18,6 +18,7 @@ export default function Header() {
 		setPage(1)
 		setRandomId()
 		setSearchParams()
+		setFilter({ sort: '', query: '' })
 	}
 	return (
 		<header>

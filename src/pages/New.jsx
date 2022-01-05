@@ -4,6 +4,7 @@ import CardList from '../components/CardList';
 import { FilmsContext } from '../components/context/Context';
 import GetCards from '../components/GetCards'
 import useFetching from '../components/hooks/useFetching';
+import { useFilterFilms } from '../components/hooks/useFilterFilms';
 import useObserver from '../components/hooks/useObserver';
 import Loader from '../components/UI/Loader';
 
@@ -13,6 +14,7 @@ export default function New() {
 		films, setFilms,
 		page, setPage,
 		empty, setEmpty,
+		filter,
 		searchParams,
 		selectedGenre,
 		date
@@ -28,6 +30,7 @@ export default function New() {
 		})
 	}, [searchParams])
 
+	const filterFilms = useFilterFilms(films, filter.sort, filter.query)
 
 	const pageItems = 20;
 	const [fetchCardsNew, isLoading] = useFetching(async () => {
@@ -37,7 +40,10 @@ export default function New() {
 
 	})
 
-
+	useEffect(() => {
+		if ((filter.query || filter.sort) && lastElement.current) lastElement.current.style.display = 'none'
+		if (!filter.query && !filter.sort && lastElement.current) lastElement.current.style.display = 'block'
+	}, [filter])
 
 	useObserver(lastElement, films, page < totalPages, isLoading, () => {
 
@@ -67,7 +73,7 @@ export default function New() {
 	return (
 		isLoading && empty
 			? <Loader />
-			: <CardList lastElement={lastElement} films={films} />
+			: <CardList lastElement={lastElement} films={filterFilms} />
 
 	)
 }
