@@ -16,9 +16,9 @@ export default function Navigation({ closeAll }) {
 		if (event.target !== genre.current && !genreBlock.current.contains(event.target)) setIsVisible(false)
 
 	}
-	useEffect(() => {
-		document.addEventListener('mouseover', setVisible)
-	}, [])
+
+	if (genre.current && genreBlock.current) document.addEventListener('mouseover', setVisible)
+
 
 
 	const links = [
