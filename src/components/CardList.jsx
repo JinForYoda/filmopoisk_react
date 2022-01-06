@@ -30,7 +30,7 @@ export default function CardList({ films, lastElement }) {
 
 					: < div ref={lastElement} className='page__end' style={{
 						height: '2rem',
-						gridColumn: '3'
+						gridColumn: 'span 5'
 					}}><Loader /></div>
 
 				}

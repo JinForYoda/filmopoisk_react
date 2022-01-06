@@ -1,5 +1,5 @@
 .loaderCenter{
-	grid-column: 3;
+grid-column: span 5;
 	height: calc(100vh - 9rem);
 	display: flex;
 	align-items: center;
