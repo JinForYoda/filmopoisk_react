@@ -48,7 +48,6 @@ export default function Top() {
 	})
 
 
-
 	useEffect(() => {
 
 		if (films.length !== 0) fetchCardsTop()

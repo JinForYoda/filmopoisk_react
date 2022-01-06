@@ -48,7 +48,6 @@ export default function Search() {
 		setTotalPages(response.data.pagesCount)
 
 	})
-
 	useEffect(() => {
 		if ((filter.query || filter.sort) && lastElement.current) lastElement.current.style.display = 'none'
 		if (!filter.query && !filter.sort && lastElement.current) lastElement.current.style.display = 'block'
@@ -78,8 +77,9 @@ export default function Search() {
 
 	}, [films])
 	return (
-		isLoading && empty
+		isLoading
 			? < Loader />
 			: < CardList lastElement={lastElement} films={filterFilms} />
+
 	)
 }

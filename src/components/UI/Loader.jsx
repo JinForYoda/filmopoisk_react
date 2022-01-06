@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { FilmsContext } from '../context/Context'
 
 export default function Loader() {
+	const { empty } = useContext(FilmsContext)
 	return (
-		<div>
+		<div className={empty ? 'loaderBox' : ''}>
 
 			<div className="loader">
 				<svg viewBox="0 0 80 80">

@@ -6,7 +6,6 @@ export default function useFetching(callback) {
 		try {
 			setIsLoading(true)
 			await callback()
-
 		}
 		finally {
 			setIsLoading(false)
