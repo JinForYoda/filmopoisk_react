@@ -1,7 +1,6 @@
 import { useMemo } from "react"
 export const useSortedFilms = (films, sort) => {
 	const sortedFilms = useMemo(() => {
-
 		return sort
 			? films.sort((a, b) => a[sort].localeCompare(b[sort]))
 			: films

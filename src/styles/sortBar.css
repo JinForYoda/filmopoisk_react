@@ -4,7 +4,7 @@
 	width: 100%;
 	background-color: var(--bckg-color);
 	margin-top: 3rem;
-	padding: 0 1rem 0.5rem;
+	padding: 0.5rem 1rem 0.5rem;
 	color: var(--main-color);
 }
 
@@ -14,9 +14,6 @@
 	border-bottom: 0.05rem rgba(0,0,0,0) solid;
 }
 
-.sortItems+.sortItems{
-
-}
 
 .sortItems:hover{
 	color: var(--add-color);
@@ -33,4 +30,11 @@
  
 .small{
 	height: 1rem;
+}
+
+.spanGenre{
+		font-size: 0.8rem;
+}
+.spanGenre-name{
+	color: var(--add-color);
 }

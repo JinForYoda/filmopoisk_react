@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 
@@ -16,7 +16,9 @@ export default function Navigation({ closeAll }) {
 		if (event.target !== genre.current && !genreBlock.current.contains(event.target)) setIsVisible(false)
 
 	}
-	document.addEventListener('mouseover', setVisible)
+	useEffect(() => {
+		document.addEventListener('mouseover', setVisible)
+	}, [])
 
 
 	const links = [

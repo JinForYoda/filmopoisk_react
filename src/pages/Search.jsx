@@ -78,8 +78,8 @@ export default function Search() {
 
 	}, [films])
 	return (
-		isLoading && empty
-			? <Loader />
+		isLoading
+			? < Loader />
 			: < CardList lastElement={lastElement} films={filterFilms} />
 	)
 }

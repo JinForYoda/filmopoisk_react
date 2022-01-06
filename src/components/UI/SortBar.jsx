@@ -1,10 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { FilmsContext } from '../context/Context'
+import getIdByGenres from '../utils/getIdByGenres'
 
 export default function SortBar() {
 	const {
-		filter, setFilter
+		filter, setFilter,
+		selectedGenre,
+		search
 	} = useContext(FilmsContext)
 
 	const location = useLocation().pathname
@@ -12,6 +15,7 @@ export default function SortBar() {
 		{ value: 'nameRu', name: 'По названию' },
 		{ value: 'year', name: 'По дате выхода', except: '/new' }
 	]
+
 	return (
 		<div className='sortBar'>
 			<input
@@ -33,6 +37,15 @@ export default function SortBar() {
 						{option.name}
 					</span>
 				)
+			}
+			{
+				location === '/genres'
+				&&
+				<span className='spanGenre'>Поиск по жанру:<span className="spanGenre-name"> {getIdByGenres(selectedGenre * 1)}</span></span>
+				||
+				location === '/search'
+				&&
+				<span className='spanGenre'>Поиск по ключевому слову:<span className="spanGenre-name"> {search}</span></span>
 			}
 		</div>
 	)
