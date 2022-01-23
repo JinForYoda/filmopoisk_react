@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/filmopoisk_react/static/css/main.8df68e16.css",
+    "main.js": "/filmopoisk_react/static/js/main.39e584ad.js",
+    "index.html": "/filmopoisk_react/index.html",
+    "main.8df68e16.css.map": "/filmopoisk_react/static/css/main.8df68e16.css.map",
+    "main.39e584ad.js.map": "/filmopoisk_react/static/js/main.39e584ad.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8df68e16.css",
+    "static/js/main.39e584ad.js"
+  ]
+}
