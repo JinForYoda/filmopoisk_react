@@ -58,14 +58,14 @@ export default function Random() {
 
 
 	return (
-		<main>
+		<React.Fragment>
 			{isDone
 				? < MainFilm film={randomFilm} isLoading={isLoading} />
 				: <div className='loaderCenter' >
 					<Loader />
 				</div>
 			}
-		</main>
+		</React.Fragment>
 
 
 	)

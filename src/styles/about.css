@@ -1,0 +1,15 @@
+.aboutBox{
+	background-color: var(--card-color);
+	grid-row: 2/5;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.aboutText{
+	color: var(--add-color);
+	font-weight: 400;
+	font-size: 4rem;
+	pointer-events: none;
+	text-align: center;
+}

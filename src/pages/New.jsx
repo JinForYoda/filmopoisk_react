@@ -64,12 +64,11 @@ export default function New() {
 			setEmpty(true)
 			fetchCardsNew()
 		}
-		else {
+		else if (!isLoading) {
 			setEmpty(false)
 		}
 
-	}, [films])
-
+	}, [films, isLoading])
 	return (
 		isLoading && empty
 			? <Loader />

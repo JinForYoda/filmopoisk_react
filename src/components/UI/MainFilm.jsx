@@ -36,7 +36,7 @@ export default function MainFilm({ film, isLoading }) {
 	return (
 		< div ref={bckg} className={location !== '/random' ? 'movieCard' : 'movieCard noblur'} >
 			{!isLoading &&
-				<div className="movieCard__main">
+				<div className={location !== '/random' ? "movieCard__main" : "movieCard__main random"}>
 
 					<div className="movieCard__main__mainImg">
 						<img onLoad={() => { setImgLoad(true) }} className="movieCard__main__mainImg-img" src={film.posterUrl} />

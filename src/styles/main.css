@@ -8,7 +8,6 @@
 	border-radius: 1rem;
 	padding:0.7rem 0;
 	transition: transform 200ms linear;
-
 }
 
 
@@ -40,7 +39,7 @@
 .card__title-main{
 	font-weight: 400;
 	font-size: 1rem;
-	max-height: 3rem;
+	max-height: 2.5rem;
 	overflow-y: auto;
 	
 }
@@ -71,6 +70,7 @@
 	font-weight: 600;
 	transition: all 100ms linear;
 	cursor: pointer;
+	font-size: 0.75rem;
 }
 
 .card__button-watch{
@@ -118,4 +118,9 @@
 
 .hidde{
 	display: none;
+}
+
+.page__end{
+	height: 2rem;
+	grid-column: 1/-1;
 }

@@ -5,7 +5,7 @@ import getGenresById from '../utils/getGenresById'
 
 
 
-export default function GenresList({ isVisible, reference, closeAll }) {
+export default function GenresList({ isVisible, setIsVisible, reference, closeAll }) {
 	const {
 		setSelectedGenre,
 		searchParams, setSearchParams
@@ -60,6 +60,7 @@ export default function GenresList({ isVisible, reference, closeAll }) {
 							to='genres'
 							onClick={() => {
 								setSelectedGenre(getGenresById()[genre.name.toLowerCase()])
+								setIsVisible(false)
 								closeAll()
 								setSearchParams({
 									genre: genre.query

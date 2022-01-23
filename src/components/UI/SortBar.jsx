@@ -5,6 +5,7 @@ import getIdByGenres from '../utils/getIdByGenres'
 
 export default function SortBar() {
 	const {
+		films,
 		filter, setFilter,
 		selectedGenre,
 		search
@@ -17,7 +18,7 @@ export default function SortBar() {
 	]
 
 	return (
-		<div className='sortBar'>
+		films.length !== 0 && < div className='sortBar' >
 			<input
 				className='navigaton__search-input small'
 				placeholder='Поиск на странице'
@@ -47,6 +48,6 @@ export default function SortBar() {
 				&&
 				<span className='spanGenre'>Поиск по ключевому слову:<span className="spanGenre-name"> {search}</span></span>
 			}
-		</div>
+		</div >
 	)
 }

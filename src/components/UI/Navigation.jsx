@@ -23,20 +23,20 @@ export default function Navigation({ closeAll }) {
 
 	const links = [
 		{
-			class: 'navigation__menu__block-list',
+			class: 'navigation__menu__block-list nav_top',
 			path: '/top',
 			name: 'Топ-250',
 			active: true
 
 		},
 		{
-			class: 'navigation__menu__block-list',
+			class: 'navigation__menu__block-list nav_new',
 			path: '/new',
 			name: 'Новинки',
 			active: true
 		},
 		{
-			class: 'navigation__menu__block-list genre',
+			class: 'navigation__menu__block-list genre nav_genre',
 			path: '/genres',
 			name: "Жанр",
 			child: GenresList,
@@ -47,13 +47,13 @@ export default function Navigation({ closeAll }) {
 
 		},
 		{
-			class: 'navigation__menu__block-list',
+			class: 'navigation__menu__block-list nav_random',
 			path: '/random',
 			name: "Случайное",
 			active: true
 		},
 		{
-			class: 'navigation__menu__block-list',
+			class: 'navigation__menu__block-list nav_about',
 			path: '/about',
 			name: "О Нас",
 			active: true
@@ -79,7 +79,7 @@ export default function Navigation({ closeAll }) {
 								{link.name}
 							</Link>
 							{link.child
-								? <link.child isVisible={isVisible} closeAll={closeAll} reference={link.childRef && link.childRef} />
+								? <link.child isVisible={isVisible} setIsVisible={setIsVisible} closeAll={closeAll} reference={link.childRef && link.childRef} />
 								: ""
 							}
 						</li>

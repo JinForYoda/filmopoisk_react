@@ -4,7 +4,7 @@ import { FilmsContext } from '../context/Context'
 export default function Loader() {
 	const { empty } = useContext(FilmsContext)
 	return (
-		<div className={empty ? 'loaderBox' : ''}>
+		<div className={empty ? 'loaderBox' : 'loaderEnd'}>
 
 			<div className="loader">
 				<svg viewBox="0 0 80 80">

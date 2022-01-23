@@ -76,11 +76,11 @@ export default function Genres() {
 			setEmpty(true)
 			fetchCardsGenre()
 		}
-		else {
+		else if (!isLoading) {
 			setEmpty(false)
 		}
 
-	}, [films])
+	}, [films, isLoading])
 
 
 	return (

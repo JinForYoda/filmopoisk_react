@@ -71,11 +71,11 @@ export default function Search() {
 			setEmpty(true)
 			fetchCardsSearch()
 		}
-		else {
+		else if (!isLoading) {
 			setEmpty(false)
 		}
 
-	}, [films])
+	}, [films, isLoading])
 	return (
 		isLoading
 			? < Loader />

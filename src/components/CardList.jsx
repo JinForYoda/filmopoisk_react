@@ -4,6 +4,7 @@ import { FilmsContext } from './context/Context';
 import MainCard from './UI/MainCard';
 import Loader from './UI/Loader'
 import SortBar from './UI/SortBar';
+import { Portal } from 'react-portal';
 
 export default function CardList({ films, lastElement }) {
 	const { empty, main } = useContext(FilmsContext)
@@ -13,6 +14,7 @@ export default function CardList({ films, lastElement }) {
 	return (
 		<React.Fragment>
 			<SortBar />
+
 			<main>
 				{
 					films.map((film) =>
@@ -20,21 +22,11 @@ export default function CardList({ films, lastElement }) {
 					)
 				}
 
-				{main && <MainCard film={mainFilm} setMainFilm={setMainFilm} />}
+				{main && <Portal node={document.getElementById('root')}> <MainCard film={mainFilm} setMainFilm={setMainFilm} /></Portal>}
+				< div ref={lastElement} className={empty ? 'page__end hidde' : 'page__end'}>{empty ? '' : <Loader />}</div>
 
-				{empty
-					? < div ref={lastElement} className='page__end' style={{
-						height: '2rem',
-						display: 'none'
-					}}></div>
-
-					: < div ref={lastElement} className='page__end' style={{
-						height: '2rem',
-						gridColumn: 'span 5'
-					}}><Loader /></div>
-
-				}
 			</main >
+
 		</React.Fragment>
 	)
 }

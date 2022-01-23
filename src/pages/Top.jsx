@@ -59,11 +59,11 @@ export default function Top() {
 			setEmpty(true)
 			fetchCardsTop()
 		}
-		else {
+		else if (!isLoading) {
 			setEmpty(false)
 		}
 
-	}, [films])
+	}, [films, isLoading])
 
 	return (
 

@@ -1,10 +1,12 @@
 .movieCard{
+	grid-area: mainCard;
+	grid-row: 2/5;
 	
-	position: fixed;
 	left: 0;
 	top: 0;
-	margin-top: 0.5rem;
-	
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	height: 100%;
 	width: 100%;
 
@@ -13,29 +15,61 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	transition: opacity 100ms linear;
+/* transition: opacity 100ms linear; */
 }
 
 .noblur{
 	backdrop-filter: none
 }
 
+
 .movieCard__main{
-	width: 70%;
+	width: 80%;
 	height: 80%;
 	background-color: var(--card-color);
 	border-radius: 2rem;
 	border: 0.1rem solid var(--add-color);
 	position: relative;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	display: grid;
+	grid-template-areas: 
+	'info info cancel'
+	;
+	grid-template-columns: 1fr 0fr ;
+	grid-template-rows: 0 1fr;
+	justify-items: center;
+	padding: 1rem 1rem 1rem 3rem;
+	overflow-y: auto;
+}
 
+
+
+
+.random{
+	padding: 1rem;
+}
+.movieCard__main::-webkit-scrollbar{
+	width: 0.5rem;
+}
+.movieCard__main::-webkit-scrollbar-track{
+	border-radius: 1rem;
+	background-color: transparent;
+}
+.movieCard__main::-webkit-scrollbar-thumb{
+	border-radius: 1rem;
+}
+.movieCard__main::-webkit-scrollbar-button {
+  height: 1rem;
 }
 .movieCard__main__mainImg{
-	height: 90%;
+	grid-area: img;
+	/* height: 50%; */
+height: 34rem;
 	flex:1 1 100%;
-	margin-left: 2.5%;
+	display: flex;
+	justify-content: center;
+
+	/* margin-left: 2.5%; */
+	display: none;
 
 	
 }
@@ -46,12 +80,37 @@
 	
 }
 
+@media (min-width:1100px){
+	.movieCard__main{
+		overflow: hidden;
+	}
+	.movieCard__main{
+		grid-template-areas: 
+	'img info cancel';
+	grid-template-columns: 0fr auto 0fr;
+	}
+	.movieCard__main__mainImg{
+		display:flex;
+	
+		padding: 1rem 1rem 1rem 0;
+	}
+	.movieCard__main__info__discription{
+		overflow-y: auto;
+		
+	
+	}
+}
+
+
 .movieCard__main__info{
-	display: flex;
-	flex-direction: column;
-		flex:1 1 500%;
+
+	grid-area: info;
+	display: grid;
+	
+	grid-template-rows: auto auto 15rem;
 	height: 100%;
-	justify-content: space-around;
+	gap:1rem;
+	
 	align-items: center;
 	color: var(--main-color);
 	padding: 1rem;
@@ -66,6 +125,7 @@
 }
 
 .movieCard__main__info__title-mainTitle{
+	font-size: 1.5rem;
 	font-weight: 400;
 	color: var(--add-color);
 }
@@ -97,25 +157,24 @@
 }
 
 .movieCard__main__info__discription{
-height: 40%;
-max-height: 40%;
-overflow-y: auto;
+height: 100%;
+max-height: 100%;
+
 }
 .movieCard__main__info__discription-text{
 	height: 100%;
 	line-height: 1.4rem;
 	text-align: justify;
 	font-weight: 200;
-	padding-right: 1rem;
+
 }
 
 .movieCard__main-cancel{
+	grid-area: cancel;
 	position: relative;
 
 	display: block;
 	float: right;
-	margin-right: 2rem;
-	margin-top: -31rem;
 	width: 2rem;
 	height: 2rem;
 }
