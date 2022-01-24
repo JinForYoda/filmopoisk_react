@@ -13,34 +13,41 @@
 	color: var(--main-color);
 }
 
-@media (min-width:850px) {
-	.sortBar{
-		justify-content: start;
-		grid-template-areas: 'search sortItems sortItems spanGenre';
-	}
-}
+
 
 .sortItems{
-	grid-area: sortItems span 2/sortItems ;
+	width: fit-content;
+	grid-column: 2;
 	font-size: 0.8rem;
 	cursor: pointer;
 	border-bottom: 0.05rem rgba(0,0,0,0) solid;
 }
 
+@media (min-width:850px) {
+	.sortBar{
+		justify-content: start;
+		grid-template-areas: 'search sortItems sortItems spanGenre';
+	}
+	.sortItems{
+		grid-row: 1;
+		grid-column: span 2;
+	}
+}
 
+@media (hover: hover) {
 .sortItems:hover{
 	color: var(--add-color);
 }
-
+}
 .sortItems.active{
 	border-bottom: 0.05rem var(--add-color) solid;
 	color: var(--add-color);
 }
-
+@media (hover: hover) {
 .sortItems.active:hover{
 	color:var(--text-color)
 }
- 
+}
 .small{
 	grid-area: search;
 	height: 1rem;

@@ -9,7 +9,7 @@ import MainFilm from './MainFilm'
 
 export default function MainCard({ film, setMainFilm }) {
 
-	const { main, searchParams, setSearchParams } = useContext(FilmsContext)
+	const { main, setMain, searchParams, setSearchParams } = useContext(FilmsContext)
 
 	const navigate = useNavigate()
 
@@ -28,10 +28,11 @@ export default function MainCard({ film, setMainFilm }) {
 	}, [main])
 
 	useEffect(() => {
+		console.log(searchParams);
 		navigate({
 			search: `?${createSearchParams(searchParams)}`
 		})
-
+		//if (!searchParams.filmId) { setMain(false) }
 	}, [searchParams])
 
 

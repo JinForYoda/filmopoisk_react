@@ -10,11 +10,11 @@
 	transition: transform 200ms linear;
 }
 
-
+@media (hover: hover) {
 .card:hover{
 	transform:scale(1.05);
 }
-
+}
 .card__imgbox-img{
 	height: 8rem;
 	width: calc(8rem/1.5);
@@ -85,19 +85,20 @@
 	border:0.1rem solid rgba(0,0,0,0);
 	color: var(--main-color);
 }
-
+@media (hover: hover) {
 .card__button-watch:hover,
 .card__button-more:hover{
 	background-color: var(--add-color);
 	color: var(--bckg-color);
 	border:0.1rem solid var(--main-color);
 }
-
+}
+@media (hover: hover) {
 .card__button-watch:hover{
 	color: var(--main-color);
 	border:0.1rem solid var(--bckg-color);
 }
-
+}
 .search{
 	margin-top: 5rem;
 	margin-left: 2rem;

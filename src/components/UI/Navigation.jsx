@@ -78,14 +78,15 @@ export default function Navigation({ closeAll }) {
 							<Link onClick={link.active ? closeAll : (e) => { e.preventDefault() }} ref={link.ref && link.ref} to={link.path}>
 								{link.name}
 							</Link>
-							{link.child
-								? <link.child isVisible={isVisible} setIsVisible={setIsVisible} closeAll={closeAll} reference={link.childRef && link.childRef} />
-								: ""
+							{
+								link.child
+									? <link.child isVisible={isVisible} setIsVisible={setIsVisible} closeAll={closeAll} reference={link.childRef && link.childRef} />
+									: ""
 							}
 						</li>
 					)
 				}
 			</ul>
-		</div>
+		</div >
 	)
 }

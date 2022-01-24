@@ -23,8 +23,6 @@ function App() {
 	const [filter, setFilter] = useState({ sort: '', query: '' })
 
 
-
-
 	useEffect(() => {
 		setDate(getDate())
 	}, [])
@@ -46,7 +44,7 @@ function App() {
 			randomId, setRandomId,
 			date
 		}}>
-			<BrowserRouter>
+			<BrowserRouter basename="/filmopoisk_react">
 				<Header />
 				<AppRouter />
 

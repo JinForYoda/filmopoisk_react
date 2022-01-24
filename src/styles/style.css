@@ -1,11 +1,15 @@
-@import url(//db.onlinewebfonts.com/c/a1750a4dae8db954fdd595f313b3b34e?family=Graphik+Kinopoisk+LC+Web+SB);
-@import "http://fonts.fontstorage.com/import/roboto.css";
+/* @import url("http://fonts.fontstorage.com/import/roboto.css"); */
 @import url(header.css);
 @import url(main.css);
 @import url(movieCard.css);
 @import url(loader.css);
 @import url(sortBar.css);
 @import url(about.css);
+
+@font-face {
+	font-family: Roboto;
+	src: url(./fonts/Roboto-Light.ttf);
+}
 *{
 	margin: 0;
 	padding: 0;
@@ -24,9 +28,10 @@
 	--card-color:#333333;
 	--add-color: #FF6F25;
 	--text-color:#707070;
-	font-family: 'Roboto';
+	font-family: 'Roboto', sans-serif;
 	font-size: calc(100vh * 0.02);
 	font-weight: 350;
+	-webkit-tap-highlight-color: transparent; 
 }
 ::-webkit-scrollbar {
   width: 0.5rem;
@@ -46,6 +51,7 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--add-color);
 }
+
 
 #root{
 	display: grid;
