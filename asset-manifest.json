@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/filmopoisk_react/static/css/main.ef29c028.css",
-    "main.js": "/filmopoisk_react/static/js/main.2fbc6122.js",
+    "main.css": "/filmopoisk_react/static/css/main.932d3991.css",
+    "main.js": "/filmopoisk_react/static/js/main.1c70cf23.js",
     "static/media/Roboto-Light.ttf": "/filmopoisk_react/static/media/Roboto-Light.8be2d1487420548b3b8d.ttf",
     "index.html": "/filmopoisk_react/index.html",
-    "main.ef29c028.css.map": "/filmopoisk_react/static/css/main.ef29c028.css.map",
-    "main.2fbc6122.js.map": "/filmopoisk_react/static/js/main.2fbc6122.js.map"
+    "main.932d3991.css.map": "/filmopoisk_react/static/css/main.932d3991.css.map",
+    "main.1c70cf23.js.map": "/filmopoisk_react/static/js/main.1c70cf23.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef29c028.css",
-    "static/js/main.2fbc6122.js"
+    "static/css/main.932d3991.css",
+    "static/js/main.1c70cf23.js"
   ]
 }
