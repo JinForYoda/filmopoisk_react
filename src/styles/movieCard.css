@@ -164,7 +164,7 @@ max-height: 100%;
 .movieCard__main__info__discription-text{
 	height: 100%;
 	line-height: 1.4rem;
-	text-align: justify;
+	
 	font-weight: 200;
 
 }

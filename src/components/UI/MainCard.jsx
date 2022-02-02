@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react'
-import { createSearchParams, useNavigate } from 'react-router-dom'
+import { createSearchParams, useLocation, useNavigate } from 'react-router-dom'
 import { FilmsContext } from '../context/Context'
 import GetCards from '../GetCards'
 import useFetching from '../hooks/useFetching'
@@ -12,11 +12,16 @@ export default function MainCard({ film, setMainFilm }) {
 	const { main, setMain, searchParams, setSearchParams } = useContext(FilmsContext)
 
 	const navigate = useNavigate()
+	const location = useLocation()
 
 	const [fetchMainCard, isLoading] = useFetching(async () => {
 		const response = await GetCards.mainCard(film.kinopoiskId || film.filmId)
 		setMainFilm(response.data)
 	})
+
+	useEffect(() => {
+		if (!location.search.includes('filmId') && film.description) setMain(false)
+	}, [location])
 
 
 	useEffect(() => {
@@ -28,15 +33,14 @@ export default function MainCard({ film, setMainFilm }) {
 	}, [main])
 
 	useEffect(() => {
-		console.log(searchParams);
-		navigate({
+
+		film.description && navigate({
 			search: `?${createSearchParams(searchParams)}`
 		})
-		//if (!searchParams.filmId) { setMain(false) }
 	}, [searchParams])
 
 
 	return (
-		<MainFilm film={film} isLoading={isLoading} />
+		<MainFilm film={film} setMainFilm={setMainFilm} isLoading={isLoading} />
 	)
 }

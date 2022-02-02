@@ -5,7 +5,8 @@ import deleteFilmId from '../utils/deleteFilmId'
 import setTime from '../utils/setTime'
 
 
-export default function MainFilm({ film, isLoading }) {
+export default function MainFilm({ film, setMainFilm, isLoading }) {
+
 	const closeBtn = useRef()
 	const bckg = useRef()
 	const [imgLoad, setImgLoad] = useState(false)
@@ -28,10 +29,12 @@ export default function MainFilm({ film, isLoading }) {
 				search: `?${createSearchParams(searchParams)}`
 			})
 			setMain(false)
+			setMainFilm({})
+
 
 		}
 	}
-
+	if (!film.description) return null
 	if (location !== '/random') document.addEventListener('click', close)
 	return (
 		< div ref={bckg} className={location !== '/random' ? 'movieCard' : 'movieCard noblur'} >

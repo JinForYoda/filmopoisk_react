@@ -11,6 +11,7 @@ export default function AppRouter() {
 		setFilms
 	} = useContext(FilmsContext);
 
+
 	useEffect(() => {
 		setFilms([])
 	}, [])

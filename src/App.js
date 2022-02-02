@@ -28,8 +28,6 @@ function App() {
 	}, [])
 
 
-
-
 	return (
 		<FilmsContext.Provider value={{
 			search, setSearch,
